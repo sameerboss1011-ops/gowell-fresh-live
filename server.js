@@ -40,7 +40,9 @@ app.post('/api/razorpay/webhook', express.raw({ type: 'application/json', limit:
   }
 });
 app.use(express.json({ limit: '1mb' }));
-
+app.get('/', (req, res) => {
+  res.json({ service: 'GoWell payment API', status: 'running' });
+});
 app.get('/health', (_req, res) => res.json({
   ok: true, service: 'GoWell fresh payment backend',
   databaseConfigured: Boolean(db), paymentsConfigured,
